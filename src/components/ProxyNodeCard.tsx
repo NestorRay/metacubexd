@@ -1,6 +1,6 @@
 import { IconBrandSpeedtest } from '@tabler/icons-solidjs'
 import { twMerge } from 'tailwind-merge'
-import { Button, IPv6Support, Latency } from '~/components'
+import { Button, Latency } from '~/components'
 import { filterSpecialProxyType, formatProxyType } from '~/helpers'
 import { useProxies } from '~/signals'
 
@@ -9,10 +9,19 @@ export const ProxyNodeCard = (props: {
   isSelected?: boolean
   onClick?: () => void
 }) => {
-  const { proxyLatencyTest, proxyLatencyTestingMap } = useProxies()
   const { proxyName, isSelected, onClick } = props
-  const { proxyNodeMap } = useProxies()
+  const {
+    getNowProxyNodeName,
+    proxyIPv6SupportMap,
+    proxyNodeMap,
+    proxyLatencyTest,
+    proxyLatencyTestingMap,
+  } = useProxies()
+  const supportIPv6 = createMemo(
+    () => proxyIPv6SupportMap()[getNowProxyNodeName(proxyName || '')],
+  )
   const proxyNode = createMemo(() => proxyNodeMap()[proxyName])
+
   const specialType = () =>
     filterSpecialProxyType(proxyNode()?.type)
       ? proxyNode()?.xudp
@@ -25,25 +34,44 @@ export const ProxyNodeCard = (props: {
   return (
     <div
       class={twMerge(
-        'border-neutral-focus card card-bordered tooltip-bottom flex flex-col justify-between gap-1 bg-neutral p-2 text-neutral-content',
-        isSelected &&
-          'bg-gradient-to-br from-primary to-secondary text-primary-content',
+        'card tooltip card-compact tooltip-accent bg-neutral text-neutral-content',
+        isSelected && 'bg-primary text-primary-content',
         onClick && 'cursor-pointer',
       )}
+      data-tip={proxyName}
       onClick={onClick}
-      title={proxyName}
     >
-      <div class="flex items-center justify-between gap-2">
-        <span class="break-all text-left text-sm">{proxyName}</span>
+      <div class="card-body">
+        <div class="card-title flex items-center justify-between gap-2">
+          <span class="line-clamp-1 text-start text-sm">{proxyName}</span>
 
-        <span class="flex items-center gap-1">
-          <IPv6Support name={props.proxyName} />
+          <div class="badge badge-primary badge-sm font-bold uppercase">
+            {formatProxyType(proxyNode()?.type)}
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <Show when={specialType()}>
+            <div class="badge badge-secondary badge-sm">{specialType()}</div>
+          </Show>
+
+          <Show when={supportIPv6()}>
+            <div class="badge badge-accent badge-sm">IPv6</div>
+          </Show>
+        </div>
+
+        <div class="card-actions items-center justify-end">
+          <Latency
+            name={props.proxyName}
+            class={twMerge(isSelected && 'badge')}
+          />
+
           <Button
-            class="btn-circle btn-ghost h-auto min-h-0 w-auto"
+            class="btn-square btn-sm"
             icon={
               <IconBrandSpeedtest
-                size={20}
                 class={twMerge(
+                  'size-6',
                   proxyLatencyTestingMap()[proxyName] &&
                     'animate-pulse text-success',
                 )}
@@ -55,25 +83,7 @@ export const ProxyNodeCard = (props: {
               void proxyLatencyTest(proxyName, proxyNode().provider)
             }}
           />
-        </span>
-      </div>
-
-      <div class="flex items-center justify-between gap-1">
-        <div
-          class={twMerge(
-            'text-xs text-slate-500',
-            isSelected && 'text-primary-content',
-          )}
-        >
-          {formatProxyType(proxyNode()?.type)}
-
-          <Show when={specialType()}>{` :: ${specialType()}`}</Show>
         </div>
-
-        <Latency
-          name={props.proxyName}
-          class={twMerge(isSelected && 'badge badge-sm px-1')}
-        />
       </div>
     </div>
   )

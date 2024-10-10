@@ -1,5 +1,81 @@
 # Changelog
 
+## [1.158.0](https://github.com/MetaCubeX/metacubexd/compare/v1.157.0...v1.158.0) (2024-10-10)
+
+
+### Features
+
+* **connections:** add isClosingConnections spinner ([23193c5](https://github.com/MetaCubeX/metacubexd/commit/23193c5c98e41cc73250c4567f2558ee6f8943fb))
+
+## [1.157.0](https://github.com/MetaCubeX/metacubexd/compare/v1.156.0...v1.157.0) (2024-10-10)
+
+
+### Features
+
+* **proxies:** adjust collapsible grid columns ([3d1a234](https://github.com/MetaCubeX/metacubexd/commit/3d1a2349780f780976192ed8cc06ada6b46c069b))
+
+## [1.156.0](https://github.com/MetaCubeX/metacubexd/compare/v1.155.0...v1.156.0) (2024-10-10)
+
+
+### Features
+
+* **proxies:** add multi-column render back ([9f7f8d0](https://github.com/MetaCubeX/metacubexd/commit/9f7f8d0161103c222747b4d65f330057edd87d81))
+* **proxies:** replace gradient with pure background color ([e273439](https://github.com/MetaCubeX/metacubexd/commit/e273439f688790f5ced9f0fac9f2ac5d7064650e))
+
+## [1.155.0](https://github.com/MetaCubeX/metacubexd/compare/v1.154.0...v1.155.0) (2024-10-10)
+
+
+### Features
+
+* **config:** clear dns query results when input content gets cleared ([04cae65](https://github.com/MetaCubeX/metacubexd/commit/04cae65805fac8102246f57aa438fc054bc68174))
+* **config:** rearrange settings ([90c3d15](https://github.com/MetaCubeX/metacubexd/commit/90c3d15616860c27c80b47e4190414a68ec395c2))
+
+
+### Bug Fixes
+
+* **config:** missing translation for running mode ([705f651](https://github.com/MetaCubeX/metacubexd/commit/705f6513469466ac74c137f396c135b31da31804))
+
+## [1.154.0](https://github.com/MetaCubeX/metacubexd/compare/v1.153.2...v1.154.0) (2024-10-10)
+
+
+### Features
+
+* **config:** check for frontend version update ([657c180](https://github.com/MetaCubeX/metacubexd/commit/657c180e056e345776ac1a21966c4c3eafdb1d09))
+
+## [1.153.2](https://github.com/MetaCubeX/metacubexd/compare/v1.153.1...v1.153.2) (2024-10-10)
+
+
+### Bug Fixes
+
+* **pwa:** items in includeAssets cannot be empty string ([ab794e7](https://github.com/MetaCubeX/metacubexd/commit/ab794e73e3fce6de51485aa1837344117941fc9f))
+
+## [1.153.1](https://github.com/MetaCubeX/metacubexd/compare/v1.153.0...v1.153.1) (2024-10-10)
+
+
+### Bug Fixes
+
+* **rules:** text spacing of `updated at` ([342119e](https://github.com/MetaCubeX/metacubexd/commit/342119e01e5a4fe02ca6cb68902d08d52f36c486))
+
+## [1.153.0](https://github.com/MetaCubeX/metacubexd/compare/v1.152.0...v1.153.0) (2024-10-10)
+
+
+### Features
+
+* **proxies:** overhaul the look of proxies page, drop renderInTwoColumns support ([698362f](https://github.com/MetaCubeX/metacubexd/commit/698362f1c7b31837ac60bdfde7aac1deccb2ea35))
+
+
+### Bug Fixes
+
+* **proxies:** double specialType if statement ([0c004be](https://github.com/MetaCubeX/metacubexd/commit/0c004be98f062f79806a4ef95949f380d17571e1))
+* **proxies:** prevent proxyName from overflowing ([4037597](https://github.com/MetaCubeX/metacubexd/commit/40375979b8d1328ba3dde5e0a61d24271dfd4b3e))
+
+## [1.152.0](https://github.com/MetaCubeX/metacubexd/compare/v1.151.0...v1.152.0) (2024-10-09)
+
+
+### Features
+
+* show current page title, closes [#474](https://github.com/MetaCubeX/metacubexd/issues/474) ([9c76d7f](https://github.com/MetaCubeX/metacubexd/commit/9c76d7ff76886495208809d3e0f2efc6e90de2f3))
+
 ## [1.151.0](https://github.com/MetaCubeX/metacubexd/compare/v1.150.0...v1.151.0) (2024-10-01)
 
 
